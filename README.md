@@ -1,7 +1,7 @@
 # LangGraph Fraud-Review Loop (TypeScript)
 
 A LangGraph/TypeScript port of the orchestration slice from
-[X-Men Fulfillment](../xmen-fulfillment) — same pipeline, two runtimes:
+[X-Men Fulfillment](https://github.com/jkillz2026/xmen-fulfillment) — same pipeline, two runtimes:
 
 | Concept | Custom C# runtime (X-Men) | LangGraph (this project) |
 |---|---|---|
