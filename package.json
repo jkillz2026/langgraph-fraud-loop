@@ -6,7 +6,8 @@
   "scripts": {
     "start": "tsx src/run.ts",
     "order": "tsx src/run.ts submit",
-    "review": "tsx src/run.ts review"
+    "review": "tsx src/run.ts review",
+    "serve": "tsx src/serve.ts"
   },
   "dependencies": {
     "@langchain/core": "^1.2.20",
