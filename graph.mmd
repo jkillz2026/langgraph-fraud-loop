@@ -1,0 +1,34 @@
+%%{init: {'flowchart': {'curve': 'linear'}}}%%
+graph TD;
+	__start__([<p>__start__</p>]):::first
+	cerebro(cerebro)
+	cyclops(cyclops)
+	beast(beast)
+	humanGate(humanGate)
+	wolverine(wolverine)
+	gambit(gambit)
+	storm(storm)
+	jeanGrey(jeanGrey)
+	compensate(compensate)
+	autoReject(autoReject)
+	__end__([<p>__end__</p>]):::last
+	__start__ --> cerebro;
+	autoReject --> __end__;
+	cerebro --> cyclops;
+	compensate --> __end__;
+	jeanGrey --> __end__;
+	storm --> jeanGrey;
+	cyclops -.-> beast;
+	cyclops -. &nbsp;end&nbsp; .-> __end__;
+	beast -. &nbsp;reject&nbsp; .-> autoReject;
+	beast -. &nbsp;review&nbsp; .-> humanGate;
+	beast -. &nbsp;fulfill&nbsp; .-> wolverine;
+	humanGate -. &nbsp;fulfill&nbsp; .-> wolverine;
+	humanGate -. &nbsp;reject&nbsp; .-> autoReject;
+	wolverine -.-> gambit;
+	wolverine -. &nbsp;end&nbsp; .-> __end__;
+	gambit -.-> compensate;
+	gambit -. &nbsp;ship&nbsp; .-> storm;
+	classDef default fill:#f2f0ff,line-height:1.2;
+	classDef first fill-opacity:0;
+	classDef last fill:#bfb6fc;

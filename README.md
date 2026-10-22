@@ -13,6 +13,32 @@ A LangGraph/TypeScript port of the orchestration slice from
 | Human approval | `AwaitingApproval` + `POST /orders/{id}/approve` + in-memory map | `interrupt()` + `Command({resume})` + `SqliteSaver` checkpointer |
 | Saga compensation | `ICompensatable` implementations | `compensate` node routed on failure |
 
+## The graph
+
+Generated with `graph.getGraph().drawMermaid()` — solid edges are fixed,
+dotted are conditional (FraudRouter bands, human decision, saga fallback):
+
+```mermaid
+graph TD;
+	start([start]) --> cerebro;
+	cerebro --> cyclops;
+	cyclops -.-> beast;
+	cyclops -.-> end([end]);
+	beast -.->|score 30-69| humanGate;
+	beast -.->|score >=70| autoReject;
+	beast -.->|score <30| wolverine;
+	humanGate -.->|approve| wolverine;
+	humanGate -.->|reject| autoReject;
+	wolverine -.->|in stock| gambit;
+	wolverine -.->|out of stock| end;
+	gambit -.->|failure| compensate;
+	gambit -.->|paid| storm;
+	storm --> jeanGrey;
+	jeanGrey --> end;
+	compensate --> end;
+	autoReject --> end;
+```
+
 ## Run it
 
 ```bash

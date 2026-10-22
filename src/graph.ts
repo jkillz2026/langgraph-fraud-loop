@@ -40,7 +40,11 @@ const builder = new StateGraph(GraphState)
     s.decision === "approve" ? "fulfill" : "reject",
     { fulfill: "wolverine", reject: "autoReject" })
 
-  .addEdge("wolverine", "gambit")
+  // Out-of-stock ends the run BEFORE payment — nothing reserved yet, so
+  // there's nothing to compensate. (Gambit failures DO route to compensate:
+  // inventory was already reserved by then.)
+  .addConditionalEdges("wolverine", (s: State) =>
+    s.status === "Failed" ? "end" : "gambit", { gambit: "gambit", end: END })
 
   // Saga: any fulfillment failure routes to compensation before ending.
   .addConditionalEdges("gambit", (s: State) =>
