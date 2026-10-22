@@ -1,0 +1,24 @@
+{
+  "name": "langgraph-fraud-loop",
+  "version": "1.0.0",
+  "description": "LangGraph (TypeScript) port of the X-Men Fulfillment fraud-review pipeline — orchestrated agents, tool calling, human-in-the-loop, saga compensation",
+  "type": "module",
+  "scripts": {
+    "start": "tsx src/run.ts",
+    "order": "tsx src/run.ts submit",
+    "review": "tsx src/run.ts review"
+  },
+  "dependencies": {
+    "@langchain/core": "^1.2.20",
+    "@langchain/langgraph": "^1.5.2",
+    "@langchain/langgraph-checkpoint-sqlite": "^1.1.0",
+    "@langchain/openai": "^1.6.3",
+    "dotenv": "^16.4.0",
+    "zod": "^3.23.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.6.0"
+  }
+}
