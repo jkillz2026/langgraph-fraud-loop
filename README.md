@@ -23,20 +23,20 @@ graph TD;
 	start([start]) --> cerebro;
 	cerebro --> cyclops;
 	cyclops -.-> beast;
-	cyclops -.-> end([end]);
+	cyclops -.-> done([end]);
 	beast -.->|score 30-69| humanGate;
 	beast -.->|score >=70| autoReject;
 	beast -.->|score <30| wolverine;
 	humanGate -.->|approve| wolverine;
 	humanGate -.->|reject| autoReject;
 	wolverine -.->|in stock| gambit;
-	wolverine -.->|out of stock| end;
+	wolverine -.->|out of stock| done;
 	gambit -.->|failure| compensate;
 	gambit -.->|paid| storm;
 	storm --> jeanGrey;
-	jeanGrey --> end;
-	compensate --> end;
-	autoReject --> end;
+	jeanGrey --> done;
+	compensate --> done;
+	autoReject --> done;
 ```
 
 ## Run it
